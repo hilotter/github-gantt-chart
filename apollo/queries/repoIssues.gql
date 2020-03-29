@@ -1,0 +1,16 @@
+query repoIssues($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    name
+    issues(first: 100, filterBy: {states: OPEN}, orderBy: {field: CREATED_AT, direction: DESC}){
+      totalCount
+      edges {
+        node {
+          title
+          number
+          url
+          body
+        }
+      }
+    }
+  }
+}
