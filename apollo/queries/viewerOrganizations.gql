@@ -1,0 +1,12 @@
+query {
+  viewer {
+    organizations(first: 100) {
+      edges {
+        node {
+          login
+          name
+        }
+      }
+    }
+  }
+}

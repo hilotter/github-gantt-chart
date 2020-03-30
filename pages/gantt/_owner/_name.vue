@@ -25,15 +25,14 @@ export default Vue.extend({
   },
   async beforeMount() {
     const { owner, name } = this.$nuxt.$route.params
-    const repository = await this.getRepoIssues(owner, name)
-    const issues = repository.issues.edges.map((issue) => {
+    const queryResult = await this.getRepoIssues(owner, name)
+    const issues = queryResult.edges.map((issue) => {
       const { title, number, body, url } = issue.node
       return { title, number, body, url }
     })
     issues.forEach((issue) => {
       this.issues.push(issue)
     })
-    console.log(this.issues)
   },
   methods: {
     async getRepoIssues(owner, name) {
@@ -49,7 +48,7 @@ export default Vue.extend({
           headers: { authorization: authToken }
         }
       })
-      return data.repository
+      return data.repository.issues
     }
   }
 })

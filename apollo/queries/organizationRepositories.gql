@@ -1,0 +1,11 @@
+query organizationRepositories($owner: String!) {
+  organization(login: $owner) {
+    repositories(first: 100, orderBy: {field: PUSHED_AT, direction: DESC}) {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}
