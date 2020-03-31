@@ -1,13 +1,18 @@
 <template>
-  <ul>
-    <li v-for="repository in repositories" :key="repository.name">
-      <a :href="getGanttLink(repository.name)">{{ repository.name }}</a>
-    </li>
-  </ul>
+  <div class="container mx-auto px-4">
+    <h1 class="text-xl mb-4">Select repository</h1>
+    <ul class="list-disc ml-4">
+      <li v-for="(repository, index) in repositories" :key="index" class="mb-4">
+        <a :href="getGanttLink(repository.name)">{{ repository.name }}</a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
+import viewerRepositories from '~/apollo/queries/viewerRepositories.gql'
 import organizationRepositories from '~/apollo/queries/organizationRepositories.gql'
 
 type Repository = {
@@ -21,11 +26,19 @@ export default Vue.extend({
       repositories: []
     }
   },
+  computed: {
+    ...mapState('auth', ['user'])
+  },
   async beforeMount() {
     const { owner } = this.$nuxt.$route.params
     this.owner = owner
 
-    const queryResult = await this.getRepositories(owner)
+    let queryResult
+    if (owner === this.user.login) {
+      queryResult = await this.getViewerRepositories()
+    } else {
+      queryResult = await this.getOrganizationRepositories()
+    }
     const repositories = queryResult.edges.map((repository) => {
       const { name } = repository.node
       return { name }
@@ -38,13 +51,24 @@ export default Vue.extend({
     getGanttLink(repoName) {
       return `/gantt/${this.owner}/${repoName}`
     },
-    async getRepositories(owner) {
+    async getViewerRepositories() {
+      const authToken = localStorage.getItem('auth._token.github')
+      const client = this.$apollo.getClient()
+      const { data } = await client.query({
+        query: viewerRepositories,
+        context: {
+          headers: { authorization: authToken }
+        }
+      })
+      return data.viewer.repositories
+    },
+    async getOrganizationRepositories() {
       const authToken = localStorage.getItem('auth._token.github')
       const client = this.$apollo.getClient()
       const { data } = await client.query({
         query: organizationRepositories,
         variables: {
-          owner
+          owner: this.owner
         },
         context: {
           headers: { authorization: authToken }

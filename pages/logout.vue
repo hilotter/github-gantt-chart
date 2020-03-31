@@ -6,12 +6,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  mounted() {
-    const dialogMessage = 'SignOut confirmation'
-    if (!window.confirm(dialogMessage)) {
-      this.$router.go(-1)
-      return
-    }
+  beforeMount() {
     this.$auth.logout()
     this.$router.push('/')
   }

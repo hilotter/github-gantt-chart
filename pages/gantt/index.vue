@@ -1,15 +1,28 @@
 <template>
-  <ul>
-    <li v-for="organization in organizations" :key="organization.name">
-      <a :href="getOrganizationLink(organization.login)">
-        {{ organization.name }}
-      </a>
-    </li>
-  </ul>
+  <div class="container mx-auto px-4">
+    <h1 class="text-xl mb-4">Select username or organization</h1>
+    <ul class="list-disc ml-4">
+      <li class="mb-4">
+        <a :href="getRepoListLink(user.login)">
+          {{ user.login }}
+        </a>
+      </li>
+      <li
+        v-for="organization in organizations"
+        :key="organization.name"
+        class="mb-4"
+      >
+        <a :href="getRepoListLink(organization.login)">
+          {{ organization.login }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import viewerOrganizations from '~/apollo/queries/viewerOrganizations.gql'
 
 type Organzation = {
@@ -23,6 +36,9 @@ export default Vue.extend({
       organizations: []
     }
   },
+  computed: {
+    ...mapState('auth', ['user'])
+  },
   async beforeMount() {
     const queryResult = await this.getOrganzations()
     const organizations = queryResult.edges.map((organzation) => {
@@ -34,7 +50,7 @@ export default Vue.extend({
     })
   },
   methods: {
-    getOrganizationLink(login) {
+    getRepoListLink(login) {
       return `/gantt/${login}`
     },
     async getOrganzations() {

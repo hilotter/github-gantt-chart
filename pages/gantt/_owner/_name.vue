@@ -1,24 +1,37 @@
 <template>
   <div>
-    <svg id="gantt"></svg>
-    <ul>
-      <li v-for="issue in issues" :key="issue.number">
-        <a :href="issue.url" target="_blank" rel="noopener">
-          {{ issue.title }}
+    <div class="container mx-auto px-4">
+      <h1 class="text-xl mb-4">
+        <a
+          :href="`https://github.com/${owner}/${repoName}`"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ owner }}/{{ repoName }}
         </a>
-      </li>
-    </ul>
-    <ul>
-      <li v-for="viewMode in viewModes" :key="viewMode">
-        <a @click="chanageViewMode(viewMode)">{{ viewMode }}</a>
-      </li>
-    </ul>
+      </h1>
+      <ul class="mb-2">
+        <li v-for="viewMode in viewModes" :key="viewMode" class="inline-block">
+          <button
+            class="text-sm px-4 py-2 rounded-full outline-none focus:outline-none mr-2 mb-1 shadow"
+            type="button"
+            @click="chanageViewMode(viewMode)"
+          >
+            {{ viewMode }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div v-show="show" class="w-screen mx-auto px-4">
+      <svg id="gantt"></svg>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import repoIssues from '~/apollo/queries/repoIssues.gql'
+import repositoryIssues from '~/apollo/queries/repositoryIssues.gql'
 
 type Issue = {
   id: string
@@ -32,12 +45,18 @@ type Issue = {
 
 export default Vue.extend({
   data(): {
+    show: Boolean
+    owner: string
+    repoName: string
     issues: Issue[]
     gantt: any
     viewModes: string[]
     currentViewMode: string
   } {
     return {
+      show: false,
+      owner: '',
+      repoName: '',
       issues: [],
       gantt: null,
       viewModes: ['Quarter Day', 'Half Day', 'Day', 'Week', 'Month'],
@@ -46,6 +65,9 @@ export default Vue.extend({
   },
   async beforeMount() {
     const { owner, name } = this.$nuxt.$route.params
+    this.owner = owner
+    this.repoName = name
+
     const queryResult = await this.getRepoIssues(owner, name)
     const issues = queryResult.edges.map((issue) => {
       const { title, number, body, url } = issue.node
@@ -56,6 +78,10 @@ export default Vue.extend({
 
     if (this.issues.length > 0) {
       this.initializeGantt()
+      this.show = true
+    } else {
+      alert('Gantt chart issues not found. please select repository again.')
+      this.$router.push(`/gantt/${owner}`)
     }
   },
   methods: {
@@ -63,7 +89,7 @@ export default Vue.extend({
       const authToken = localStorage.getItem('auth._token.github')
       const client = this.$apollo.getClient()
       const { data } = await client.query({
-        query: repoIssues,
+        query: repositoryIssues,
         variables: {
           owner,
           name
