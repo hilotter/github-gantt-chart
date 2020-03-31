@@ -139,22 +139,22 @@ export default Vue.extend({
 
       const lines = issue.body.split('\r\n')
       lines.forEach((line) => {
-        if (!line.indexOf(process.env.START_DATE_STRING_TEMPLATE!)) {
+        if (line.includes(process.env.START_DATE_STRING_TEMPLATE!)) {
           startDate = line
             .split(process.env.START_DATE_STRING_TEMPLATE!)[1]
             .replace(/\s/g, '')
         }
-        if (!line.indexOf(process.env.END_DATE_STRING_TEMPLATE!)) {
+        if (line.includes(process.env.END_DATE_STRING_TEMPLATE!)) {
           endDate = line
             .split(process.env.END_DATE_STRING_TEMPLATE!)[1]
             .replace(/\s/g, '')
         }
-        if (!line.indexOf(process.env.PROGRESS_STRING_TEMPLATE!)) {
+        if (line.includes(process.env.PROGRESS_STRING_TEMPLATE!)) {
           progress = line
             .split(process.env.PROGRESS_STRING_TEMPLATE!)[1]
             .replace(/\s/g, '')
         }
-        if (!line.indexOf(process.env.DEPENDENCIES_STRING_TEMPLATE!)) {
+        if (line.includes(process.env.DEPENDENCIES_STRING_TEMPLATE!)) {
           dependencies = line
             .split(process.env.DEPENDENCIES_STRING_TEMPLATE!)[1]
             .replace(/\s/g, '')
