@@ -7,12 +7,12 @@
             <a href="/">Gantt Chart</a>
           </span>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div class="text-sm lg:flex-grow"></div>
+        <div class="block flex-grow flex items-center w-auto">
+          <div class="text-sm flex-grow"></div>
           <div v-if="!isLogInPage">
             <a
               :href="loginLink"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-4 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
             >
               {{ loginLinkText }}
             </a>
