@@ -95,6 +95,12 @@ const config: Configuration = {
       eslint: true
     }
   },
+  env: {
+    START_DATE_STRING_TEMPLATE: process.env.START_DATE_STRING_TEMPLATE!,
+    END_DATE_STRING_TEMPLATE: process.env.END_DATE_STRING_TEMPLATE!,
+    PROGRESS_STRING_TEMPLATE: process.env.PROGRESS_STRING_TEMPLATE!,
+    DEPENDENCIES_STRING_TEMPLATE: process.env.DEPENDENCIES_STRING_TEMPLATE!
+  },
   /*
    ** Build configuration
    */
