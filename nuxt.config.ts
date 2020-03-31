@@ -1,4 +1,6 @@
+import path from 'path'
 import { Configuration } from '@nuxt/types'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -19,7 +21,11 @@ const config: Configuration = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/plugins/frappe-gantt/frappe-gantt.css' }
+    ],
+    script: [{ src: '/plugins/frappe-gantt/frappe-gantt.js' }]
   },
   /*
    ** Customize the progress-bar color
@@ -96,7 +102,22 @@ const config: Configuration = {
     /*
      ** You can extend webpack config here
      */
-    extend(_config, _ctx) {}
+    extend(config, _ctx) {
+      config.plugins!.push(
+        new CopyWebpackPlugin([
+          {
+            from: 'node_modules/frappe-gantt/dist/frappe-gantt.js',
+            to: path.join(__dirname, 'static/plugins/frappe-gantt/')
+          },
+          {
+            from: 'node_modules/frappe-gantt/dist/frappe-gantt.css',
+            to: path.join(__dirname, 'static/plugins/frappe-gantt/')
+          }
+        ])
+      )
+
+      return config
+    }
   }
 }
 
