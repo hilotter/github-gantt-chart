@@ -50,7 +50,7 @@ export default Vue.extend({
           headers: { authorization: authToken }
         }
       })
-      return data.organization.repositories
+      return data.viewer.organization.repositories
     }
   }
 })
