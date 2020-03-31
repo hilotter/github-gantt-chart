@@ -15,6 +15,10 @@
 
 refs: [sample issue template](https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE)
 
+- show gantt chart on below site
+
+https://github-gantt-chart.herokuapp.com/gantt/{username}/{reponame}
+
 ## Build Setup
 
 ```bash
