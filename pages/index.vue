@@ -12,12 +12,12 @@
         </div>
       </li>
       <li class="mb-4">
-        <a class="underline" href="/login">Login</a>
+        <nuxt-link class="underline" to="/login">Login</nuxt-link>
         to this site with your Github account.
       </li>
       <li class="mb-4">
         access
-        <a class="underline" href="/gantt">/gantt</a>
+        <nuxt-link class="underline" to="/gantt">/gantt</nuxt-link>
       </li>
       <li class="mb-4">
         select username or organization, and select repository name

@@ -3,18 +3,18 @@
     <h1 class="text-xl mb-4">Select username or organization</h1>
     <ul class="list-disc ml-4">
       <li class="mb-4">
-        <a :href="getRepoListLink(user.login)">
+        <nuxt-link :to="getRepoListLink(user.login)">
           {{ user.login }}
-        </a>
+        </nuxt-link>
       </li>
       <li
         v-for="organization in organizations"
         :key="organization.name"
         class="mb-4"
       >
-        <a :href="getRepoListLink(organization.login)">
+        <nuxt-link :to="getRepoListLink(organization.login)">
           {{ organization.login }}
-        </a>
+        </nuxt-link>
       </li>
     </ul>
   </div>

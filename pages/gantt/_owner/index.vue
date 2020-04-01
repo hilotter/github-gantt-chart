@@ -3,7 +3,9 @@
     <h1 class="text-xl mb-4">Select repository</h1>
     <ul class="list-disc ml-4">
       <li v-for="(repository, index) in repositories" :key="index" class="mb-4">
-        <a :href="getGanttLink(repository.name)">{{ repository.name }}</a>
+        <nuxt-link :to="getGanttLink(repository.name)">
+          {{ repository.name }}
+        </nuxt-link>
       </li>
     </ul>
   </div>

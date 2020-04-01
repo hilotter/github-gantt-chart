@@ -4,18 +4,18 @@
       <nav class="flex items-center justify-between flex-wrap py-6">
         <div class="flex items-center flex-shrink-0 mr-6">
           <span class="font-semibold text-xl tracking-tight">
-            <a href="/">{{ siteName }}</a>
+            <nuxt-link to="/">{{ siteName }}</nuxt-link>
           </span>
         </div>
         <div class="block flex-grow flex items-center w-auto">
           <div class="text-sm flex-grow"></div>
           <div v-if="!isLogInPage">
-            <a
-              :href="loginLink"
+            <nuxt-link
+              :to="loginLink"
               class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
             >
               {{ loginLinkText }}
-            </a>
+            </nuxt-link>
           </div>
         </div>
       </nav>
