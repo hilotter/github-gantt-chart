@@ -2,6 +2,8 @@
 
 > show gantt-chart from github issues
 
+![sample](https://user-images.githubusercontent.com/1042519/78112646-7ac65e80-7439-11ea-8861-ed4110cf7e46.png)
+
 ## Usage
 
 - add gantt chart item in your issue
@@ -15,9 +17,12 @@
 
 refs: [sample issue template](https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE)
 
+
 - show gantt chart on below site
 
 https://github-gantt-chart.herokuapp.com/gantt/{username}/{reponame}
+
+Example(require login): https://github-gantt-chart.herokuapp.com/gantt/hilotter/github-gantt-chart
 
 ## Build Setup
 
