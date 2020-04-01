@@ -28,7 +28,7 @@
     </div>
 
     <div v-show="show" class="container mx-auto px-4">
-      <p class="text-right">
+      <p class="text-right text-sm">
         Display by
         <a href="https://frappe.io/gantt" target="_blank" rel="noopener">
           frappe/gantt

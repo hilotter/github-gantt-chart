@@ -26,7 +26,7 @@
     </div>
 
     <div class="container mx-auto px-4">
-      <div class="flex justify-center p-4">
+      <div class="flex justify-center p-4 text-sm">
         <a
           href="https://github.com/hilotter/github-gantt-chart"
           target="_blank"
