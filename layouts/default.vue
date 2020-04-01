@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="font-sans min-h-screen flex flex-col">
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-between flex-wrap py-6">
         <div class="flex items-center flex-shrink-0 mr-6">
@@ -21,7 +21,21 @@
       </nav>
     </div>
 
-    <nuxt />
+    <div class="flex-grow">
+      <nuxt />
+    </div>
+
+    <div class="container mx-auto px-4">
+      <div class="flex justify-center p-4">
+        <a
+          href="https://github.com/hilotter/github-gantt-chart"
+          target="_blank"
+          rel="noopener"
+        >
+          GitHub Repository
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
