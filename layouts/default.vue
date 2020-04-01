@@ -4,7 +4,7 @@
       <nav class="flex items-center justify-between flex-wrap py-6">
         <div class="flex items-center flex-shrink-0 mr-6">
           <span class="font-semibold text-xl tracking-tight">
-            <a href="/">Gantt Chart</a>
+            <a href="/">{{ siteName }}</a>
           </span>
         </div>
         <div class="block flex-grow flex items-center w-auto">
@@ -28,10 +28,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import { SITE_NAME } from '~/commonHead'
 
 export default Vue.extend({
   computed: {
     ...mapState('auth', ['loggedIn']),
+    siteName() {
+      return SITE_NAME
+    },
     loginLink() {
       return this.loggedIn ? '/logout' : '/login'
     },

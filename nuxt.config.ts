@@ -2,6 +2,7 @@ import path from 'path'
 import { Configuration } from '@nuxt/types'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import dotenv from 'dotenv'
+import { commonHead, commonManifest } from './commonHead'
 
 dotenv.config()
 
@@ -10,22 +11,13 @@ const config: Configuration = {
   /*
    ** Headers of the page
    */
-  head: {
-    title: process.env.npm_package_name || '',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
-      }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/plugins/frappe-gantt/frappe-gantt.css' }
-    ],
-    script: [{ src: '/plugins/frappe-gantt/frappe-gantt.js' }]
+  head: commonHead(),
+  pwa: {
+    manifest: commonManifest(),
+    workbox: {
+      offline: false,
+      skipWaiting: true
+    }
   },
   /*
    ** Customize the progress-bar color
@@ -96,6 +88,7 @@ const config: Configuration = {
     }
   },
   env: {
+    BASE_URL: process.env.BASE_URL!,
     START_DATE_STRING_TEMPLATE: process.env.START_DATE_STRING_TEMPLATE!,
     END_DATE_STRING_TEMPLATE: process.env.END_DATE_STRING_TEMPLATE!,
     PROGRESS_STRING_TEMPLATE: process.env.PROGRESS_STRING_TEMPLATE!,
