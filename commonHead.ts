@@ -15,7 +15,7 @@ export const commonHead = (): MetaInfo => {
     titleTemplate: TITLE_TEMPLATE,
     title: TITLE,
     htmlAttrs: {
-      prefix: 'og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb#'
+      prefix: 'og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb#',
     },
     meta: [
       { charset: 'utf-8' },
@@ -26,7 +26,7 @@ export const commonHead = (): MetaInfo => {
         name: 'keywords',
         content: KEYWORDS,
         'xml:lang': 'en',
-        lang: 'en'
+        lang: 'en',
       },
       { hid: 'og:site_name', name: 'og:site_name', content: SITE_NAME },
       { hid: 'og:type', name: 'og:type', content: 'website' },
@@ -35,16 +35,16 @@ export const commonHead = (): MetaInfo => {
       { hid: 'og:image', name: 'og:image', content: OGIMG_URL },
       { hid: 'og:url', name: 'og:url', content: SITE_URL },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'application-name', content: SITE_NAME }
+      { name: 'application-name', content: SITE_NAME },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/plugins/frappe-gantt/frappe-gantt.css' }
+      { rel: 'stylesheet', href: '/plugins/frappe-gantt/frappe-gantt.css' },
     ],
-    script: [{ src: '/plugins/frappe-gantt/frappe-gantt.js' }]
+    script: [{ src: '/plugins/frappe-gantt/frappe-gantt.js' }],
   }
 }
-export const commonManifest = function() {
+export const commonManifest = function () {
   return {
     name: SITE_NAME,
     lang: 'en',
@@ -52,6 +52,6 @@ export const commonManifest = function() {
     title: TITLE,
     description: DESCRIPTION,
     start_url: '/gantt?utm_source=homescreen',
-    display: 'standalone'
+    display: 'standalone',
   }
 }

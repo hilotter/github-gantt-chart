@@ -69,7 +69,7 @@ export default Vue.extend({
       issues: [],
       gantt: null,
       viewModes: ['Quarter Day', 'Half Day', 'Day', 'Week', 'Month'],
-      currentViewMode: 'Week'
+      currentViewMode: 'Week',
     }
   },
   async beforeMount() {
@@ -101,11 +101,11 @@ export default Vue.extend({
         query: repositoryIssues,
         variables: {
           owner,
-          name
+          name,
         },
         context: {
-          headers: { authorization: authToken }
-        }
+          headers: { authorization: authToken },
+        },
       })
       return data.repository.issues
     },
@@ -142,7 +142,7 @@ export default Vue.extend({
               </a>
             </div>
           `
-        }
+        },
       })
     },
     chanageViewMode(viewMode) {
@@ -203,10 +203,10 @@ export default Vue.extend({
         end: endDate,
         progress: progress * 100,
         dependencies,
-        url: issue.url
+        url: issue.url,
       }
-    }
-  }
+    },
+  },
 })
 </script>
 

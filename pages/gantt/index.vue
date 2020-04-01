@@ -33,11 +33,11 @@ type Organzation = {
 export default Vue.extend({
   data(): { organizations: Organzation[] } {
     return {
-      organizations: []
+      organizations: [],
     }
   },
   computed: {
-    ...mapState('auth', ['user'])
+    ...mapState('auth', ['user']),
   },
   async beforeMount() {
     const queryResult = await this.getOrganzations()
@@ -59,11 +59,11 @@ export default Vue.extend({
       const { data } = await client.query({
         query: viewerOrganizations,
         context: {
-          headers: { authorization: authToken }
-        }
+          headers: { authorization: authToken },
+        },
       })
       return data.viewer.organizations
-    }
-  }
+    },
+  },
 })
 </script>

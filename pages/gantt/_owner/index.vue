@@ -25,11 +25,11 @@ export default Vue.extend({
   data(): { owner: string; repositories: Repository[] } {
     return {
       owner: '',
-      repositories: []
+      repositories: [],
     }
   },
   computed: {
-    ...mapState('auth', ['user'])
+    ...mapState('auth', ['user']),
   },
   async beforeMount() {
     const { owner } = this.$nuxt.$route.params
@@ -59,8 +59,8 @@ export default Vue.extend({
       const { data } = await client.query({
         query: viewerRepositories,
         context: {
-          headers: { authorization: authToken }
-        }
+          headers: { authorization: authToken },
+        },
       })
       return data.viewer.repositories
     },
@@ -70,14 +70,14 @@ export default Vue.extend({
       const { data } = await client.query({
         query: organizationRepositories,
         variables: {
-          owner: this.owner
+          owner: this.owner,
         },
         context: {
-          headers: { authorization: authToken }
-        }
+          headers: { authorization: authToken },
+        },
       })
       return data.viewer.organization.repositories
-    }
-  }
+    },
+  },
 })
 </script>

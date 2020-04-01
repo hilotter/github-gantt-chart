@@ -58,7 +58,7 @@ export default Vue.extend({
     },
     loginLinkText() {
       return this.loggedIn ? 'Logout' : 'Login'
-    }
-  }
+    },
+  },
 })
 </script>

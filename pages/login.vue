@@ -23,7 +23,7 @@ export default Vue.extend({
   methods: {
     authenticate() {
       this.$auth.loginWith('github')
-    }
-  }
+    },
+  },
 })
 </script>

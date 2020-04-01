@@ -52,7 +52,7 @@ export default Vue.extend({
     },
     dependenciesFormat() {
       return process.env.DEPENDENCIES_STRING_TEMPLATE
-    }
-  }
+    },
+  },
 })
 </script>

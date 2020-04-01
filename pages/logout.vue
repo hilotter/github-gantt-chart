@@ -9,6 +9,6 @@ export default Vue.extend({
   beforeMount() {
     this.$auth.logout()
     this.$router.push('/')
-  }
+  },
 })
 </script>

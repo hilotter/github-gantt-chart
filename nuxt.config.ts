@@ -16,8 +16,8 @@ const config: Configuration = {
     manifest: commonManifest(),
     workbox: {
       offline: false,
-      skipWaiting: true
-    }
+      skipWaiting: true,
+    },
   },
   /*
    ** Customize the progress-bar color
@@ -40,10 +40,10 @@ const config: Configuration = {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
   ],
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
   },
   /*
    ** Nuxt.js modules
@@ -53,29 +53,29 @@ const config: Configuration = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
   ],
   auth: {
     redirect: {
       login: '/login',
       logout: '/',
       callback: '/callback',
-      home: '/gantt'
+      home: '/gantt',
     },
     strategies: {
       github: {
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
-        scope: ['read:user', 'read:org', 'repo']
-      }
-    }
+        scope: ['read:user', 'read:org', 'repo'],
+      },
+    },
   },
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://api.github.com/graphql'
-      }
-    }
+        httpEndpoint: 'https://api.github.com/graphql',
+      },
+    },
   },
   /*
    ** Axios module configuration
@@ -84,15 +84,15 @@ const config: Configuration = {
   axios: {},
   typescript: {
     typeCheck: {
-      eslint: true
-    }
+      eslint: true,
+    },
   },
   env: {
     BASE_URL: process.env.BASE_URL!,
     START_DATE_STRING_TEMPLATE: process.env.START_DATE_STRING_TEMPLATE!,
     END_DATE_STRING_TEMPLATE: process.env.END_DATE_STRING_TEMPLATE!,
     PROGRESS_STRING_TEMPLATE: process.env.PROGRESS_STRING_TEMPLATE!,
-    DEPENDENCIES_STRING_TEMPLATE: process.env.DEPENDENCIES_STRING_TEMPLATE!
+    DEPENDENCIES_STRING_TEMPLATE: process.env.DEPENDENCIES_STRING_TEMPLATE!,
   },
   /*
    ** Build configuration
@@ -106,18 +106,18 @@ const config: Configuration = {
         new CopyWebpackPlugin([
           {
             from: 'node_modules/frappe-gantt/dist/frappe-gantt.js',
-            to: path.join(__dirname, 'static/plugins/frappe-gantt/')
+            to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
           },
           {
             from: 'node_modules/frappe-gantt/dist/frappe-gantt.css',
-            to: path.join(__dirname, 'static/plugins/frappe-gantt/')
-          }
+            to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
+          },
         ])
       )
 
       return config
-    }
-  }
+    },
+  },
 }
 
 export default config
