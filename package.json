@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "show gantt-chart from github issues",
   "author": "hilotter",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
