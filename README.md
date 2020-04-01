@@ -21,7 +21,20 @@ https://github-gantt-chart.herokuapp.com/gantt/{username}/{reponame}
 
 ## Build Setup
 
+- Register GitHub OAuth application
+
+https://github.com/settings/applications/new
+
+- Create Gantt Issues
+
+https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE
+
+- Application Setup
+
 ```bash
+# copy .env
+$ cp .env.sample .env
+
 # install dependencies
 $ yarn install
 
@@ -31,9 +44,6 @@ $ yarn dev
 # build for production and launch server
 $ yarn build
 $ yarn start
-
-# generate static project
-$ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
