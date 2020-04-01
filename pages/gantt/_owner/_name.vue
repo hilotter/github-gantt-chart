@@ -26,6 +26,15 @@
     <div v-show="show" class="w-screen mx-auto px-4">
       <svg id="gantt"></svg>
     </div>
+
+    <div v-show="show" class="container mx-auto px-4">
+      <p class="text-right">
+        Display by
+        <a href="https://frappe.io/gantt" target="_blank" rel="noopener">
+          frappe/gantt
+        </a>
+      </p>
+    </div>
   </div>
 </template>
 
