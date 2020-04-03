@@ -9,11 +9,15 @@
 - add gantt chart item in your issue
 
 ```
-#### 🗓 Start Date: 2020-04-01
-#### 🗓 End Date: 2020-04-10
-#### 📈 Progress (0-1): 0.2
-#### 📝 Dependencies: #1, #2
+#### 🗓 Start Date: 2020-04-01 <= YYYY-MM-DD format (required)
+#### 🗓 End Date: 2020-04-10 <= YYYY-MM-DD format (required)
+#### 📈 Progress (0-1): 0.2 <= (optional)
+#### 📝 Dependencies: #1, #2 <= related issues separated by , (optional)
 ```
+
+refs: [sample issue](https://github.com/hilotter/github-gantt-chart/issues/1)
+
+you can use an issue template to make typing easier.
 
 refs: [sample issue template](https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE)
 
