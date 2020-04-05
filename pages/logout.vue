@@ -6,7 +6,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
-  beforeMount() {
+  created() {
     this.$auth.logout()
     this.$router.push('/')
   },
