@@ -28,7 +28,7 @@
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/tailwindcss": "^1.0.0",
     "@types/nuxtjs__auth": "^4.8.4",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^25.2.4",
