@@ -77,7 +77,17 @@ export default Vue.extend({
     this.owner = owner
     this.repoName = name
 
-    const queryResult = await this.getRepoIssues(owner, name)
+    const queryResult = await this.getRepoIssues(owner, name).catch((err) => {
+      alert(
+        `Can not access this repository issues.\nPlease add to access permission to this repository from GitHub App Setting.\n\nDetail: ${err.message}`
+      )
+      this.$router.push(`/gantt/${owner}`)
+    })
+
+    if (!queryResult) {
+      return
+    }
+
     const issues = queryResult.edges.map((issue) => {
       const { title, number, body, url } = issue.node
       return { title, number, body, url }
