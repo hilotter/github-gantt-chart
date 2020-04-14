@@ -21,12 +21,13 @@ you can use an issue template to make typing easier.
 
 refs: [sample issue template](https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE)
 
+- install GitHub App & grant access to the repository you want to view the gantt chart
+
+https://github.com/apps/gantt-chart
 
 - show gantt chart on below site
 
 https://github-gantt-chart.herokuapp.com/gantt/{username}/{reponame}
-
-Example(require login): https://github-gantt-chart.herokuapp.com/gantt/hilotter/github-gantt-chart
 
 ## Build Setup
 
