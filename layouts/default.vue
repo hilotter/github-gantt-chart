@@ -10,6 +10,14 @@
         <div class="block flex-grow flex items-center w-auto">
           <div class="text-sm flex-grow"></div>
           <div>
+            <nuxt-link
+              to="/gantt"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
+            >
+              gantt
+            </nuxt-link>
+          </div>
+          <div>
             <a
               :href="githubAppUrl"
               class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
@@ -59,7 +67,7 @@ export default Vue.extend({
       return process.env.GITHUB_APP_URL!
     },
     githubAppLinkText() {
-      return this.loggedIn ? 'GitHub App Setting' : 'Install GitHub App'
+      return this.loggedIn ? 'setting' : 'install'
     },
     siteName() {
       return SITE_NAME

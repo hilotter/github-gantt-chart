@@ -1,5 +1,9 @@
 <template>
   <div class="container mx-auto px-4">
+    <p class="text-sm mb-4 text-gray-700">
+      <nuxt-link class="underline" to="/">home</nuxt-link> > gantt
+    </p>
+
     <h1 class="text-xl mb-4">Select username or organization</h1>
     <ul class="list-disc ml-4">
       <li class="mb-4">
