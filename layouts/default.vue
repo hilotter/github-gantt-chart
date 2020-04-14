@@ -9,6 +9,16 @@
         </div>
         <div class="block flex-grow flex items-center w-auto">
           <div class="text-sm flex-grow"></div>
+          <div>
+            <a
+              :href="githubAppUrl"
+              target="_blank"
+              rel="noopener"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
+            >
+              {{ githubAppLinkText }}
+            </a>
+          </div>
           <div v-if="!isLogInPage">
             <nuxt-link
               :to="loginLink"
@@ -47,6 +57,12 @@ import { SITE_NAME } from '~/commonHead'
 export default Vue.extend({
   computed: {
     ...mapState('auth', ['loggedIn']),
+    githubAppUrl() {
+      return process.env.GITHUB_APP_URL!
+    },
+    githubAppLinkText() {
+      return this.loggedIn ? 'GitHub App Setting' : 'Install GitHub App'
+    },
     siteName() {
       return SITE_NAME
     },

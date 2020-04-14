@@ -5,11 +5,24 @@
       <li class="mb-4">
         <p class="mb-4">add gantt chart item in your issue.</p>
         <div class="bg-gray-100">
-          {{ startDateFormat() }} 2020-04-01<br />
-          {{ endDateFormat() }} 2020-04-10<br />
-          {{ progressFormat() }} 0.5<br />
-          {{ dependenciesFormat() }} #1, #2
+          {{ startDateFormat }} 2020-04-01<br />
+          {{ endDateFormat }} 2020-04-10<br />
+          {{ progressFormat }} 0.5<br />
+          {{ dependenciesFormat }} #1, #2
         </div>
+      </li>
+      <li class="mb-4">
+        <a
+          :href="githubAppUrl"
+          target="_blank"
+          rel="noopener"
+          class="underline"
+        >
+          install gantt-chart GitHub App
+        </a>
+      </li>
+      <li class="mb-4">
+        grant access to the repository you want to view the gantt chart.
       </li>
       <li class="mb-4">
         <nuxt-link class="underline" to="/login">Login</nuxt-link>
@@ -40,7 +53,10 @@ import Vue from 'vue'
 
 export default Vue.extend({
   auth: false,
-  methods: {
+  computed: {
+    githubAppUrl() {
+      return process.env.GITHUB_APP_URL!
+    },
     startDateFormat() {
       return process.env.START_DATE_STRING_TEMPLATE
     },
