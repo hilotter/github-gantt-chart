@@ -1,5 +1,11 @@
 <template>
   <div class="container mx-auto px-4">
+    <p class="text-sm mb-4 text-gray-700">
+      <nuxt-link class="underline" to="/">home</nuxt-link> >
+      <nuxt-link class="underline" to="/gantt">gantt</nuxt-link> >
+      {{ owner }}
+    </p>
+
     <h1 class="text-xl mb-4">Select repository</h1>
     <ul class="list-disc ml-4">
       <li v-for="(repository, index) in repositories" :key="index" class="mb-4">

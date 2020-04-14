@@ -1,6 +1,15 @@
 <template>
   <div>
     <div class="container mx-auto px-4">
+      <p class="text-sm mb-4 text-gray-700">
+        <nuxt-link class="underline" to="/">home</nuxt-link> >
+        <nuxt-link class="underline" to="/gantt">gantt</nuxt-link> >
+        <nuxt-link class="underline" :to="`/gantt/${owner}`">{{
+          owner
+        }}</nuxt-link>
+        > {{ repoName }}
+      </p>
+
       <h1 class="text-xl mb-4">
         <a
           :href="`https://github.com/${owner}/${repoName}`"
