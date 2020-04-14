@@ -93,6 +93,7 @@ const config: Configuration = {
     END_DATE_STRING_TEMPLATE: process.env.END_DATE_STRING_TEMPLATE!,
     PROGRESS_STRING_TEMPLATE: process.env.PROGRESS_STRING_TEMPLATE!,
     DEPENDENCIES_STRING_TEMPLATE: process.env.DEPENDENCIES_STRING_TEMPLATE!,
+    GITHUB_APP_URL: process.env.GITHUB_APP_URL!,
   },
   /*
    ** Build configuration
