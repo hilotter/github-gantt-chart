@@ -12,8 +12,6 @@
           <div>
             <a
               :href="githubAppUrl"
-              target="_blank"
-              rel="noopener"
               class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-gray-500 hover:bg-white mt-0"
             >
               {{ githubAppLinkText }}
