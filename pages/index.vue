@@ -12,12 +12,7 @@
         </div>
       </li>
       <li class="mb-4">
-        <a
-          :href="githubAppUrl"
-          target="_blank"
-          rel="noopener"
-          class="underline"
-        >
+        <a :href="githubAppUrl" class="underline">
           install gantt-chart GitHub App
         </a>
       </li>
