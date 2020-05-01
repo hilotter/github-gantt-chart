@@ -16,7 +16,7 @@
     "@nuxt/typescript-runtime": "^0.4.2",
     "@nuxtjs/apollo": "^4.0.0-rc19",
     "@nuxtjs/auth": "^4.9.0",
-    "@nuxtjs/axios": "^5.9.7",
+    "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "graphql-tag": "^2.10.3",
