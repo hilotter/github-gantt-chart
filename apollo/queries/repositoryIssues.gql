@@ -5,6 +5,7 @@ query repoIssues($owner: String!, $name: String!) {
       totalCount
       edges {
         node {
+          id
           title
           number
           url
