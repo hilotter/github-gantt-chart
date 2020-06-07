@@ -49,16 +49,25 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import dayjs from 'dayjs'
 import repositoryIssues from '~/apollo/queries/repositoryIssues.gql'
+import updateIssue from '~/apollo/mutations/updateIssue.gql'
 
 type Issue = {
   id: string
+  githubId: string
   name: string
   start: string
   end: string
   progress: number
   dependencies: string
   url: string
+  body: string
+}
+
+type UpdatedParams = {
+  start: Date
+  end: Date
 }
 
 export default Vue.extend({
@@ -98,13 +107,17 @@ export default Vue.extend({
     }
 
     const issues = queryResult.edges.map((issue) => {
-      const { title, number, body, url } = issue.node
-      return { title, number, body, url }
+      const { id, title, number, body, url } = issue.node
+      return { id, title, number, body, url }
     })
 
     this.issues = this.generateGanttParts(issues)
 
     if (this.issues.length > 0) {
+      const savedViewMode = localStorage.getItem('currentViewMode')
+      if (savedViewMode) {
+        this.currentViewMode = savedViewMode
+      }
       this.initializeGantt()
       this.show = true
     } else {
@@ -128,7 +141,23 @@ export default Vue.extend({
       })
       return data.repository.issues
     },
+    async updateGithubIssue(id, body) {
+      const authToken = localStorage.getItem('auth._token.github')
+      const client = this.$apollo.getClient()
+      const { data } = await client.mutate({
+        mutation: updateIssue,
+        variables: {
+          id,
+          body,
+        },
+        context: {
+          headers: { authorization: authToken },
+        },
+      })
+      return data.issue
+    },
     initializeGantt() {
+      const that = this
       // eslint-disable-next-line no-new
       this.gantt = new (window as any).Gantt('#gantt', this.issues, {
         header_height: 50,
@@ -145,7 +174,7 @@ export default Vue.extend({
           return `
             <div class="details-container">
                 <div class="title">
-                    ${issue.name}
+                    ${issue.id} ${issue.name}
                 </div>
                 <div class="subtitle">
                   Date: ${issue.start} - ${issue.end}
@@ -162,10 +191,17 @@ export default Vue.extend({
             </div>
           `
         },
+        on_date_change(issue, start, end) {
+          that.updateIssue(issue, {
+            start,
+            end,
+          })
+        },
       })
     },
     chanageViewMode(viewMode) {
       this.currentViewMode = viewMode
+      localStorage.setItem('currentViewMode', viewMode)
       this.gantt.change_view_mode(viewMode)
     },
     generateGanttParts(issues): Issue[] {
@@ -180,7 +216,7 @@ export default Vue.extend({
       })
 
       const ganttData = ganttParts.filter((part) => {
-        return part.start && part.end
+        return part.start && part.end && dayjs(part.end) >= dayjs(part.start)
       })
 
       return ganttData
@@ -217,13 +253,68 @@ export default Vue.extend({
 
       return {
         id: `#${issue.number}`,
+        githubId: issue.id,
         name: issue.title,
         start: startDate,
         end: endDate,
         progress: progress * 100,
         dependencies,
         url: issue.url,
+        body: issue.body,
       }
+    },
+    updateIssue(currentIssue: Issue, updatedParams: UpdatedParams) {
+      const startDate = dayjs(updatedParams.start).format('YYYY-MM-DD')
+      const endDate = dayjs(updatedParams.end).format('YYYY-MM-DD')
+      const updatedStartDate =
+        currentIssue.start !== startDate ? startDate : null
+      const updatedEndDate = currentIssue.end !== endDate ? endDate : null
+
+      let updatedBody = currentIssue.body
+      if (updatedStartDate) {
+        const startDateRegexp = new RegExp(
+          `(${process.env.START_DATE_STRING_TEMPLATE!}).+?(\r\n)`
+        )
+        updatedBody = updatedBody.replace(
+          startDateRegexp,
+          `$1 ${updatedStartDate}$2`
+        )
+      }
+      if (updatedEndDate) {
+        const endDateRegexp = new RegExp(
+          `(${process.env.END_DATE_STRING_TEMPLATE!}).+?(\r\n)`
+        )
+        updatedBody = updatedBody.replace(
+          endDateRegexp,
+          `$1 ${updatedEndDate}$2`
+        )
+      }
+      this.updateDataIssue(
+        currentIssue,
+        updatedStartDate,
+        updatedEndDate,
+        updatedBody
+      )
+      this.updateGithubIssue(currentIssue.githubId, updatedBody)
+    },
+    updateDataIssue(
+      currentIssue: Issue,
+      updatedStartDate: string | null,
+      updatedEndDate: string | null,
+      updatedBody: string
+    ) {
+      this.issues = this.issues.map((issue) => {
+        if (issue.id === currentIssue.id) {
+          if (updatedStartDate) {
+            issue.start = updatedStartDate
+          }
+          if (updatedEndDate) {
+            issue.end = updatedEndDate
+          }
+          issue.body = updatedBody
+        }
+        return issue
+      })
     },
   },
 })
