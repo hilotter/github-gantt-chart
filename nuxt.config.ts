@@ -66,7 +66,7 @@ const config: Configuration = {
       github: {
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
-        scope: ['read:user', 'read:org', 'repo'],
+        scope: ['read:user', 'read:org'],
       },
     },
   },
