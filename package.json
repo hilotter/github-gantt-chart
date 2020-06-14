@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxt/typescript-runtime": "^0.4.8",
+    "@nuxt/typescript-runtime": "^0.4.10",
     "@nuxtjs/apollo": "^4.0.0-rc19",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.11.0",
@@ -24,24 +24,24 @@
     "nuxt": "^2.12.2"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^1.0.1",
+    "@nuxt/typescript-build": "^1.0.3",
     "@nuxtjs/eslint-config-typescript": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/tailwindcss": "^1.0.0",
+    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/tailwindcss": "^2.0.0",
     "@types/nuxtjs__auth": "^4.8.4",
-    "@typescript-eslint/parser": "^3.1.0",
-    "@vue/test-utils": "^1.0.0-beta.27",
+    "@typescript-eslint/parser": "^3.2.0",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^26.0.1",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-nuxt": ">=1.0.0",
     "eslint-plugin-prettier": "^3.1.3",
     "frappe-gantt": "^0.3.0",
     "jest": "^25.5.4",
     "prettier": "^2.0.5",
     "ts-jest": "^25.3.1",
-    "vue-jest": "^4.0.0-0"
+    "vue-jest": "^4.0.0-beta.3"
   }
 }
