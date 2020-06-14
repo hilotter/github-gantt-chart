@@ -104,16 +104,24 @@ const config: Configuration = {
      */
     extend(config, _ctx) {
       config.plugins!.push(
-        new CopyWebpackPlugin([
-          {
-            from: 'node_modules/frappe-gantt/dist/frappe-gantt.js',
-            to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
-          },
-          {
-            from: 'node_modules/frappe-gantt/dist/frappe-gantt.css',
-            to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
-          },
-        ])
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              from: path.join(
+                __dirname,
+                'node_modules/frappe-gantt/dist/frappe-gantt.js'
+              ),
+              to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
+            },
+            {
+              from: path.join(
+                __dirname,
+                'node_modules/frappe-gantt/dist/frappe-gantt.css'
+              ),
+              to: path.join(__dirname, 'static/plugins/frappe-gantt/'),
+            },
+          ],
+        })
       )
 
       return config
