@@ -10,7 +10,8 @@
     "generate": "nuxt-ts generate",
     "start": "nuxt-ts start",
     "lint": "eslint --fix --ext .js,.vue,.ts .",
-    "test": "jest"
+    "test": "jest",
+    "update-frappe-gantt": "./scripts/copy_frappe_gantt_to_static.sh"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.10",
