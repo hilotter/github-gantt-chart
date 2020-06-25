@@ -6397,10 +6397,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-frappe-gantt@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/frappe-gantt/-/frappe-gantt-0.3.0.tgz#0c718be2a5b5602be4ceb35ecc2093f9af59bea2"
-  integrity sha512-19rJUJ6UfAN7LPHHhVtYjff0mdyat/mwMW+PAXp5s1211QZ4loi+TkuGgRY9n1r9xAI/VlGoYHUehHdYZge3aQ==
+frappe-gantt@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/frappe-gantt/-/frappe-gantt-0.5.0.tgz#4dc7aa125f318efea64b4ae0e38f67a720238c1d"
+  integrity sha512-RAskVuBmnTcPJXh87oVhYmnNGy/9lvZlLHGui8QFB8yRBuUjzpZoZfZ+hKmDtBDmWNrE2/LRta06W5WmhTzzWQ==
 
 fresh@0.5.2, fresh@^0.5.2:
   version "0.5.2"
