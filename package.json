@@ -21,7 +21,7 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "dayjs": "^1.8.28",
-    "graphql-tag": "^2.10.3",
+    "graphql-tag": "^2.10.4",
     "nuxt": "^2.13.1"
   },
   "devDependencies": {
