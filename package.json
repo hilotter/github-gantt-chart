@@ -20,7 +20,7 @@
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "dayjs": "^1.8.28",
+    "dayjs": "^1.8.30",
     "graphql-tag": "^2.10.3",
     "nuxt": "^2.13.1"
   },
