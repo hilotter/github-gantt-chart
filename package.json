@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^1.0.3",
-    "@nuxtjs/eslint-config-typescript": "^2.0.0",
+    "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/tailwindcss": "^2.0.0",
     "@types/nuxtjs__auth": "^4.8.4",
