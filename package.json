@@ -30,7 +30,7 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/tailwindcss": "^2.0.0",
     "@types/nuxtjs__auth": "^4.8.4",
-    "@typescript-eslint/parser": "^3.4.0",
+    "@typescript-eslint/parser": "^4.11.1",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^26.1.0",
