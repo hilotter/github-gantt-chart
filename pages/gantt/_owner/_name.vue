@@ -50,7 +50,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import dayjs from 'dayjs'
-import orderBy from 'lodash.orderBy'
+import orderBy from 'lodash.orderby'
 import repositoryIssues from '~/apollo/queries/repositoryIssues.gql'
 import updateIssue from '~/apollo/mutations/updateIssue.gql'
 
