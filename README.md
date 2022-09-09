@@ -13,6 +13,7 @@
 #### 🗓 End Date: 2020-04-10 <= YYYY-MM-DD format (required)
 #### 📈 Progress (0-1): 0.2 <= (optional)
 #### 📝 Dependencies: #1, #2 <= related issues separated by , (optional)
+#### 🧮 Group: g <= grouping name (optional)
 ```
 
 refs: [sample issue](https://github.com/hilotter/github-gantt-chart/issues/1)
