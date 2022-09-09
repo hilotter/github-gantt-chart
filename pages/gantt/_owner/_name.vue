@@ -50,6 +50,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import dayjs from 'dayjs'
+import orderBy from 'lodash.orderBy'
 import repositoryIssues from '~/apollo/queries/repositoryIssues.gql'
 import updateIssue from '~/apollo/mutations/updateIssue.gql'
 
@@ -61,6 +62,7 @@ type Issue = {
   end: string
   progress: number
   dependencies: string
+  group: string
   url: string
   body: string
 }
@@ -219,13 +221,20 @@ export default Vue.extend({
         return part.start && part.end && dayjs(part.end) >= dayjs(part.start)
       })
 
-      return ganttData
+      const sortedGanttData = orderBy(
+        ganttData,
+        ['group', 'start'],
+        ['asc', 'asc']
+      )
+
+      return sortedGanttData
     },
     generateGanttPart(issue): Issue {
       let startDate
       let endDate
       let progress = 0
       let dependencies = ''
+      let group = ''
 
       const lines = issue.body.split('\r\n')
       lines.forEach((line) => {
@@ -249,6 +258,15 @@ export default Vue.extend({
             .split(process.env.DEPENDENCIES_STRING_TEMPLATE!)[1]
             .replace(/\s/g, '')
         }
+        if (line.includes(process.env.GROUP_STRING_TEMPLATE!)) {
+          group = line
+            .split(process.env.GROUP_STRING_TEMPLATE!)[1]
+            .replace(/\s/g, '')
+        }
+        // NOTE: set a temporary group name to place ungrouped issues at the bottom
+        if (group === '') {
+          group = 'z_last_group_'
+        }
       })
 
       return {
@@ -259,6 +277,7 @@ export default Vue.extend({
         end: endDate,
         progress: progress * 100,
         dependencies,
+        group,
         url: issue.url,
         body: issue.body,
       }
