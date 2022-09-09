@@ -1,4 +1,4 @@
-mutation updateIssue($id: String!, $body: String!) {
+mutation updateIssue($id: ID!, $body: String!) {
   updateIssue(input: {id: $id, body: $body}) {
     issue {
       id
