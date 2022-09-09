@@ -8,7 +8,8 @@
           {{ startDateFormat }} 2020-04-01<br />
           {{ endDateFormat }} 2020-04-10<br />
           {{ progressFormat }} 0.5<br />
-          {{ dependenciesFormat }} #1, #2
+          {{ dependenciesFormat }} #1, #2<br />
+          {{ groupFormat }} custom_group
         </div>
       </li>
       <li class="mb-4">
@@ -63,6 +64,9 @@ export default Vue.extend({
     },
     dependenciesFormat() {
       return process.env.DEPENDENCIES_STRING_TEMPLATE
+    },
+    groupFormat() {
+      return process.env.GROUP_STRING_TEMPLATE
     },
   },
 })
