@@ -4,6 +4,44 @@
 
 ![sample](https://user-images.githubusercontent.com/1042519/78112646-7ac65e80-7439-11ea-8861-ed4110cf7e46.png)
 
+## Build Local Setup
+
+- Register GitHub App
+
+https://github.com/settings/apps/new
+
+- Create Gantt Issues
+
+recommend that you register the following issue template in the repository where you want to use this gantt chart tool.
+
+https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE
+
+- env setting
+
+```bash
+# copy .env
+$ cp .env.sample .env
+
+# change the following environment variables to your setting
+GITHUB_CLIENT_ID={generated client id}
+GITHUB_CLIENT_SECRET={generated client secret}
+GITHUB_APP_URL={GitHub App public link}
+```
+
+- Application Setup
+
+```
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+```
+
 ## Usage
 
 - add gantt chart item in your issue
@@ -24,37 +62,8 @@ refs: [sample issue template](https://github.com/hilotter/github-gantt-chart/tre
 
 - install GitHub App & grant access to the repository you want to view the gantt chart
 
-https://github.com/apps/gantt-chart
+http://localhost:3000/
 
-- show gantt chart on below site
+- show gantt chart on your local
 
-https://github-gantt-chart.herokuapp.com/gantt/{username}/{reponame}
-
-## Build Setup
-
-- Register GitHub OAuth application
-
-https://github.com/settings/applications/new
-
-- Create Gantt Issues
-
-https://github.com/hilotter/github-gantt-chart/tree/master/.github/ISSUE_TEMPLATE
-
-- Application Setup
-
-```bash
-# copy .env
-$ cp .env.sample .env
-
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+http://localhost:3000/gantt/{username}/{reponame}
